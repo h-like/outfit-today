@@ -6,6 +6,9 @@ let maxTemp = document.querySelector("#maxTemp")
 let minTemp = document.querySelector("#minTemp")
 let currentTemp = document.querySelector("#currentTemp")
 let firstDay = document.querySelector("day1")
+let weekContainer = document.querySelector("#week")
+let suggestClothes = document.querySelector("#clothes")
+let character = document.querySelector("#character")
 
 document.querySelector("#share").addEventListener("click", () => {
   findMyCoordinates()
@@ -45,15 +48,6 @@ function getApi(bdcApi) {
   };
 }
 
-// function getWeather(handleSuccess) {
-//   http.open("GET", handleSuccess);
-//   http.send();
-//   http.onreadystatechange = function () {
-//       if (this.readyState == 4 && this.status == 200) {
-//           weatherInfo.textContext = this.responseText;
-//       }
-//   };
-// }
 
 // 1. API 키 설정
 const apiKey = "49c686d983cf933cd7b92ed9cee54208";
@@ -109,15 +103,13 @@ console.log(`Milliseconds since epoch: ${milliseconds}`);
 
         // 6. 결과 표시 (이전 코드와 동일)
         // const temp = data.list[0].main.temp;
-        // const feelsLike = data.list[0].main.feels_like;
+        const feelsLike = data.current.feels_like
         // const description = data.list[0].weather[0].description;
         // const cityName = data.city.name
         // const locationName = data.name; // API가 반환해 준 현 위치 이름 (예: 'Sillim-dong')
 
         // console.log(`--- ${locationName} 날씨 정보 ---`);
         // console.log(`현재 기온: ${temp}°C`);
-        // console.log(`체감 온도: ${feelsLike}°C`);
-        // console.log(`날씨 상태: ${description}`);
 
         // 화면에 뿌리기
         // const weatherResult = JSON.stringify(data)
@@ -133,32 +125,50 @@ console.log(`Milliseconds since epoch: ${milliseconds}`);
         const nowTemp = JSON.stringify(data.current.temp)
         currentTemp.textContent = `현재 ${nowTemp}°C`
         
-        // for (let i = 0; i < 6; i++) {
-        //   const element = array[i];
-          
-        // }
+       
         for (let i = 0; i < 7; i++) {
         // console.log("Iteration number:", i);
 
-        const week = JSON.stringify(data.daily[i].summary)
-        day1.textContent += `첫날 ${week}`
-        document.createElement('div').textContent += `이번주 ${week}`
+        // const week = JSON.stringify(data.daily[i].summary)
+        const weekday = JSON.stringify(data.daily[i].temp.day)
+        // day1.textContent += `첫날 ${week}`
+
+        const dayImg = document.createAttribute('img')
+        
         const newDayDiv = document.createElement('div')
-        newDayDiv.appendChild()
+        newDayDiv.textContent = data.daily[i].temp.min+'°C'
+        console.log(newDayDiv)
+
+        
+        
+        weekContainer.appendChild(newDayDiv)
         }
 
+        // suggestClothes.append('확인용')
         // 날씨 기반 의상 추천 (간단한 예시)
-        // if (feelsLike < 5) {
-        //     console.log("-> 추천 의상: 🧣 두꺼운 코트, 패딩, 목도리, 장갑");
-        // } else if (feelsLike < 10) {
-        //     console.log("-> 추천 의상: 🧥 코트, 야상, 기모 상의");
-        // } else if (feelsLike < 17) {
-        //     console.log("-> 추천 의상: 👔 재킷, 가디건, 니트, 맨투맨");
-        // } else if (feelsLike < 23) {
-        //     console.log("-> 추천 의상: 👕 얇은 니트, 긴팔 셔츠, 면바지");
-        // } else {
-        //     console.log("-> 추천 의상: 👚 반팔, 얇은 셔츠, 반바지");
-        // }
+        if (feelsLike <= 4) {
+          suggestClothes.append('-> 추천 의상: 🧣 두꺼운 코트, 패딩, 목도리, 기모제품')
+        } else if (feelsLike <= 8) {
+          suggestClothes.append('-> 추천 의상: 🧥 코트, 가죽자켓, 히트텍, 니트, 레깅스')
+          const paddingImage = document.createElement('img')
+          paddingImage.src = 'images/winter.png'
+          paddingImage.alt = 'winter image'
+          character.append(paddingImage)
+        } else if (feelsLike <= 11) {
+          suggestClothes.append('-> 추천 의상: 👔 자켓, 트렌치코트, 야상, 니트, 청바지, 스타킹')
+        } else if (feelsLike <= 16) {
+          suggestClothes.append('-> 추천 의상: 👖 자켓, 가디건, 야상, 스타킹, 청바지, 면바지')
+          character.append(paddingImage)
+        } else if (feelsLike <= 19) {
+          suggestClothes.append('-> 추천 의상: 👖 얇은 니트, 맨투맨, 가디건, 청바지')
+        } else if (feelsLike <= 22) {
+          suggestClothes.append('-> 추천 의상: 👖 얇은 가디건, 긴팔, 면바지, 청바지')
+        } else if (feelsLike <= 27) {
+          suggestClothes.append('-> 추천 의상: 👕 반팔, 얇은 셔츠, 반바지, 면바지')
+        } else {
+          console.log("-> 추천 의상:  반팔, 얇은 셔츠, 반바지");
+          suggestClothes.append('-> 추천 의상: 👚 민소매, 반팔, 반바지, 원피스')
+        }
 
     } catch (error) {
         console.error("날씨 정보 조회 중 오류:", error.message);
