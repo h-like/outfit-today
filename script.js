@@ -8,7 +8,7 @@ let currentTemp = document.querySelector("#currentTemp")
 let firstDay = document.querySelector("day1")
 let weekContainer = document.querySelector("#week")
 let suggestClothes = document.querySelector("#clothes")
-let character = document.querySelector("#character")
+let characterImg = document.querySelector("#character")
 
 document.querySelector("#share").addEventListener("click", () => {
   findMyCoordinates()
@@ -146,27 +146,50 @@ console.log(`Milliseconds since epoch: ${milliseconds}`);
 
         // suggestClothes.append('확인용')
         // 날씨 기반 의상 추천 (간단한 예시)
-        if (feelsLike <= 4) {
+
+      // 캐릭터 이미지 모음
+        const clothesImg = document.createElement('img')
+          clothesImg.src = 'images/winter.png'
+          clothesImg.alt = 'winter image'
+        const clothesImg5 = document.createElement('img')
+          clothesImg5.src = 'images/5-9.png'
+        const clothesImg9 = document.createElement('img')
+          clothesImg9.src = 'images/9-11.png'
+        const clothesImg12 = document.createElement('img')
+          clothesImg12.src = 'images/12-16.png'
+        const clothesImg17 = document.createElement('img')
+          clothesImg17.src = 'images/17-19.png'
+        const clothesImg20 = document.createElement('img')
+          clothesImg20.src = 'images/20-22.png'
+        const clothesImg23 = document.createElement('img')
+          clothesImg23.src = 'images/23-27.png'
+        const clothesImg28 = document.createElement('img')
+          clothesImg28.src = 'images/28.png'
+        
+
+        if (feelsLike < 5) {
           suggestClothes.append('-> 추천 의상: 🧣 두꺼운 코트, 패딩, 목도리, 기모제품')
-        } else if (feelsLike <= 8) {
+        } else if (feelsLike < 10) {
+          characterImg.append(clothesImg5)
           suggestClothes.append('-> 추천 의상: 🧥 코트, 가죽자켓, 히트텍, 니트, 레깅스')
-          const paddingImage = document.createElement('img')
-          paddingImage.src = 'images/winter.png'
-          paddingImage.alt = 'winter image'
-          character.append(paddingImage)
-        } else if (feelsLike <= 11) {
+        } else if (feelsLike < 12) {
           suggestClothes.append('-> 추천 의상: 👔 자켓, 트렌치코트, 야상, 니트, 청바지, 스타킹')
-        } else if (feelsLike <= 16) {
+          characterImg.append(clothesImg9)
+        } else if (feelsLike < 17) {
           suggestClothes.append('-> 추천 의상: 👖 자켓, 가디건, 야상, 스타킹, 청바지, 면바지')
-          character.append(paddingImage)
-        } else if (feelsLike <= 19) {
+          characterImg.append(clothesImg12)
+        } else if (feelsLike < 20) {
           suggestClothes.append('-> 추천 의상: 👖 얇은 니트, 맨투맨, 가디건, 청바지')
-        } else if (feelsLike <= 22) {
+          characterImg.append(clothesImg17)
+        } else if (feelsLike < 23) {
           suggestClothes.append('-> 추천 의상: 👖 얇은 가디건, 긴팔, 면바지, 청바지')
-        } else if (feelsLike <= 27) {
+          characterImg.append(clothesImg20)
+        } else if (feelsLike < 28) {
           suggestClothes.append('-> 추천 의상: 👕 반팔, 얇은 셔츠, 반바지, 면바지')
+          characterImg.append(clothesImg23)
         } else {
           console.log("-> 추천 의상:  반팔, 얇은 셔츠, 반바지");
+          characterImg.append(clothesImg28)
           suggestClothes.append('-> 추천 의상: 👚 민소매, 반팔, 반바지, 원피스')
         }
 

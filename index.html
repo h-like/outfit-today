@@ -1,33 +1,48 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
     <button id="share">share my location</button>
     <button id="info">weather info</button>
     <div id="city"></div>
-    <pre id="weatherInfo"></pre>
-    <div id="maxNmin">
-        <div id="maxTemp">gg</div>
-        <div id="minTemp">22</div>
-        <div id="currentTemp">33</div>
+    <pre id="weatherInfo" class="bg-pink-100"></pre>
+    <div style="display: flex;">
+        <div class="flex-container stretch">
+
+            <div id="maxNmin" >
+                <div id="maxTemp"></div>
+                <div id="minTemp"></div>
+            </div>
+        </div>
+
+        <div class="nowTemp">
+            <div id="currentTemp" class="bg-orange-300"></div>
+        </div>
     </div>
-    <div id="week">
-        <div id="day1"></div>
+    <div class="border-4 border-indigo-600">
+        <div id="week" class="bg-blue-100 border-4 border-red-600">
+            <div id="day1" class=""></div>
+        </div>
     </div>
     <div>
-        <div id="clothes"></div>
         <div id="character"></div>
+        <div id="clothes" class="bg-yellow-100"></div>
     </div>
     <pre id="result"></pre>
 
     <script src="script.js"></script>
-  
+
 
 
 
 </body>
+
 </html>

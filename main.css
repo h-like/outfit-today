@@ -1,0 +1,23 @@
+body {
+    background-color: lavender;
+}
+
+#character {
+    width: 250px;
+
+}
+
+#maxNmin {
+    border-width: 3px;
+  border-style: dashed;
+  border-color: green;
+  border-radius: 10px;
+  padding: 50px;
+}
+#currentTemp {
+    border-width: 3px;
+  border-style: dashed;
+  border-color: green;
+  border-radius: 10px;
+  padding: 50px;
+}
