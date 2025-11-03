@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body>
+    <div class="box-border size border-4 p-4 border-gray-400 m-4">
+    <button id="share">share my location</button>
+    <button id="info">weather info</button>
+    <div class="grid-container">
+
+   
+    <!-- <div id="city"></div> -->
+    <!-- <pre id="weatherInfo" class="bg-pink-100"></pre> -->
+    <!-- <div style="display: flex"> -->
+      <div class="flex-container stretch">
+        <div id="maxNmin">
+          <p>최고기온</p>
+          <div id="maxTemp">
+          </div>
+          <div id="minTemp"></div>
+          <div></div>
+        </div>
+      </div>
+
+      <div class="nowTemp">
+        <div id="currentTemp" class="col-12 text-center bg-pink-100" 
+          ></div>
+      </div>
+    </div>
+    <div id="weekContainer">
+      <!-- 콘테 -->
+      <p id="week">위크</p>
+      <div id="day1">데이원</div>
+      <!-- 이너 -->
+    </div>
+    <div>
+      <div id="character"></div>
+      <div id="clothes" class="bg-yellow-100"></div>
+    </div>
+    <pre id="result"></pre>
+ </div>
+    <script src="script.js"></script>
+  </div>
+  </body>
+</html>

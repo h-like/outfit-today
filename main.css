@@ -1,0 +1,77 @@
+body {
+    background-color: lavender;
+   align-items: center;
+   text-align: center;
+   font-family: 'Arial', sans-serif;    
+}
+
+@media (max-width: 575px) {
+    body {
+        flex-wrap: wrap;
+    }
+}
+#character {
+    width: 250px;
+
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 300px 300px;
+    grid-auto-rows: 200px 100px;
+    justify-content: center;
+    /* grid-auto-flow: rows; */
+    
+   gap: 1em;
+   /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
+}
+
+#maxNmin {
+    border-width: 3px;
+  border-style: dashed;
+  border-color: green;
+  border-radius: 10px;
+  padding: 10px;
+}
+#currentTemp {
+    /* border-width: 3px;
+  border-style: dashed;
+  border-color: green;
+  border-radius: 10px;
+  padding: 50px; */
+}
+weekContainer {
+    padding: 100px;
+   min-height: 100px;
+   /* display: flex;
+   flex-wrap: wrap; */
+   background-color: red;
+   gap: 20px;
+}
+
+#week {
+  /* min-height: 100px; */
+   display: flex;
+  /* justify-content: space-evenly; */
+  align-items: center;
+  border: 3px dashed pink;
+  border-radius: 10px
+  /* gap: 20px;
+  flex-wrap: wrap; */
+  background-color: lightyellow;
+}
+
+#week > div {
+  border: 2px solid purple;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100px;
+  // 그리드 레이아웃 적용
+  grid-auto-columns: 300px;
+  grid-auto-rows:300px;
+  grid-auto-flow: column;
+}
+
+#day1{
+  background-color: lightblue;
+}
