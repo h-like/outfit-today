@@ -10,42 +10,29 @@
 
   <body>
     <div class="box-border size border-4 p-4 border-gray-400 m-4">
-    <button id="share">share my location</button>
-    <button id="info">weather info</button>
-    <div class="grid-container">
+      <button id="share">share my location</button>
+      <button id="info">weather info</button>
+      <div class="grid-container">
+        <div class="box" style="grid-area: box-1">최고기온</div>
+        <div id="maxTemp" class="box" style="grid-area: box-2"></div>
+        <div class="box" style="grid-area: box-3">최저기온</div>
+        <div id="minTemp" class="box" style="grid-area: box-4"></div>
 
-   
-    <!-- <div id="city"></div> -->
-    <!-- <pre id="weatherInfo" class="bg-pink-100"></pre> -->
-    <!-- <div style="display: flex"> -->
-      <div class="flex-container stretch">
-        <div id="maxNmin">
-          <p>최고기온</p>
-          <div id="maxTemp">
-          </div>
-          <div id="minTemp"></div>
-          <div></div>
-        </div>
+        <!-- <div class="nowTemp box" > -->
+          <div class="box" style ="grid-area: box-5">현재</div>
+          <div id="currentTemp" class="box" style="grid-area: box-6"></div>
+        <!-- </div> -->
       </div>
-
-      <div class="nowTemp">
-        <div id="currentTemp" class="col-12 text-center bg-pink-100" 
-          ></div>
+      <div id="weekContainer">
+        <p id="week">위크</p>
+        <div id="day1">데이원</div>
       </div>
+      <div>
+        <div id="character"></div>
+        <div id="clothes" class="bg-yellow-100"></div>
+      </div>
+      <pre id="result"></pre>
     </div>
-    <div id="weekContainer">
-      <!-- 콘테 -->
-      <p id="week">위크</p>
-      <div id="day1">데이원</div>
-      <!-- 이너 -->
-    </div>
-    <div>
-      <div id="character"></div>
-      <div id="clothes" class="bg-yellow-100"></div>
-    </div>
-    <pre id="result"></pre>
- </div>
-    <script src="script.js"></script>
-  </div>
   </body>
+  <script src="script.js"></script>
 </html>
