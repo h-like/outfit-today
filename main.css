@@ -38,6 +38,13 @@ body {
 
 .location-icon {
   margin-right: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.location-icon:hover {
+  transform: scale(1.2);
 }
 
 .change-location-btn {
@@ -204,7 +211,8 @@ body {
 
 .hourly-card {
   flex: 0 0 80px;
-  background-color: #f8f8f8;
+  /* background-color: #f8f8f8; */
+  background-color: #F7FCFE;
   border-radius: 15px;
   padding: 10px 5px;
   display: flex;
@@ -387,4 +395,185 @@ body {
 
 .nav-label {
   font-weight: 500;
+}
+
+/* 검색 페이지 스타일 */
+.search-header {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eee;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-right: 10px;
+  color: #333333;
+  transition: color 0.2s ease;
+}
+
+.back-btn:hover {
+  color: #66b3ff;
+}
+
+.search-header h2 {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #333333;
+}
+
+.search-bar-container {
+  padding: 20px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eee;
+}
+
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+}
+
+.search-icon {
+  font-size: 1.2em;
+  margin-right: 10px;
+  color: #666666;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  background: none;
+  font-size: 1em;
+  color: #333333;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #999999;
+}
+
+.search-results {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.search-section {
+  padding: 20px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eee;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.section-icon {
+  font-size: 1.2em;
+  margin-right: 8px;
+}
+
+.section-title h3 {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #333333;
+}
+
+.location-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.location-card {
+  display: flex;
+  align-items: center;
+  background-color: #f8f8f8;
+  border-radius: 15px;
+  padding: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.location-card:hover {
+  background-color: #f0f0f0;
+}
+
+.location-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 12px;
+  background-color: #e0e0e0;
+}
+
+.location-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.location-name {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 4px;
+}
+
+.location-pin {
+  margin-right: 5px;
+  font-size: 0.9em;
+}
+
+.location-country {
+  font-size: 0.85em;
+  color: #666666;
+  margin-bottom: 4px;
+}
+
+.location-weather {
+  display: flex;
+  align-items: center;
+  font-size: 0.85em;
+  color: #666666;
+}
+
+.weather-emoji {
+  margin-right: 5px;
+  font-size: 1em;
+}
+
+.location-temp {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #333333;
+  margin-left: auto;
+  padding-left: 15px;
+}
+
+/* 페이지 전환 애니메이션 */
+.weather-app-container {
+  transition: opacity 0.3s ease;
+}
+
+.weather-app-container[style*="display: none"] {
+  display: none !important;
 }

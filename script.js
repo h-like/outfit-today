@@ -17,10 +17,86 @@ const alertMessage = document.querySelector("#alertMessage");
 const hourlyForecastContainer = document.querySelector("#hourlyForecastContainer");
 const changeLocationBtn = document.querySelector("#changeLocationBtn");
 
-// Change 버튼 이벤트 리스너
+// 페이지 전환 관련 요소
+const weatherPage = document.querySelector("#weatherPage");
+const searchPage = document.querySelector("#searchPage");
+const navItems = document.querySelectorAll(".nav-item");
+const backBtn = document.querySelector("#backBtn");
+const searchInput = document.querySelector("#searchInput");
+const searchResults = document.querySelector("#searchResults");
+const recentSearches = document.querySelector("#recentSearches");
+const popularDestinations = document.querySelector("#popularDestinations");
+
+// 로컬 스토리지에서 최근 검색 가져오기
+let recentSearchesList = JSON.parse(localStorage.getItem("recentSearches") || "[]");
+
+// 인기 도시 목록
+const popularCities = [
+  { name: "Tokyo", country: "Japan", lat: 35.6762, lon: 139.6503 },
+  { name: "Paris", country: "France", lat: 48.8566, lon: 2.3522 },
+  { name: "Dubai", country: "United Arab Emirates", lat: 25.2048, lon: 55.2708 },
+];
+
+// 위치 아이콘 및 Change 버튼 이벤트 리스너
+const currentLocationIcon = document.querySelector("#currentLocationIcon");
+
+// 📍 아이콘 클릭 시 현재 위치로 이동
+if (currentLocationIcon) {
+  currentLocationIcon.addEventListener("click", () => {
+    findMyCoordinates();
+  });
+}
+
+// Change 버튼 클릭 시 검색 페이지로 이동
 changeLocationBtn.addEventListener("click", () => {
-  findMyCoordinates();
+  showPage("search");
 });
+
+// 네비게이션 클릭 이벤트
+navItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    const page = item.getAttribute("data-page");
+    if (page === "search") {
+      showPage("search");
+    } else if (page === "weather") {
+      showPage("weather");
+    }
+    // Profile은 아직 구현하지 않음
+  });
+});
+
+// 뒤로가기 버튼
+if (backBtn) {
+  backBtn.addEventListener("click", () => {
+    showPage("weather");
+  });
+}
+
+// 페이지 전환 함수
+function showPage(page) {
+  if (page === "weather") {
+    weatherPage.style.display = "block";
+    searchPage.style.display = "none";
+    updateNavActive("weather");
+  } else if (page === "search") {
+    weatherPage.style.display = "none";
+    searchPage.style.display = "block";
+    updateNavActive("search");
+    loadPopularDestinations();
+    loadRecentSearches();
+  }
+}
+
+// 네비게이션 활성 상태 업데이트
+function updateNavActive(activePage) {
+  navItems.forEach((item) => {
+    if (item.getAttribute("data-page") === activePage) {
+      item.classList.add("active");
+    } else {
+      item.classList.remove("active");
+    }
+  });
+}
 
 function findMyCoordinates() {
   if (navigator.geolocation) {
@@ -129,7 +205,7 @@ async function handleSuccess(position) {
       const hourlyCard = document.createElement("div");
       hourlyCard.classList.add("hourly-card");
       hourlyCard.innerHTML = `
-        <div class="time">${i === 0 ? "Now" : `${time}시`}</div>
+        <div class="time">${i === 0 ? "Now" : `${time}`}</div>
         <img src="http://openweathermap.org/img/wn/${iconCode}.png" alt="${hourlyData.weather[0].description}">
         <div class="temp">${temp}°</div>
         <div class="precipitation">💧 ${precipitationProb}%</div>
@@ -230,4 +306,168 @@ async function handleSuccess(position) {
 function handleError(error) {
   console.error(`위치 정보를 가져오는 데 실패했습니다: ${error.message}`);
   geocodeResult.textContent = "위치 정보를 가져올 수 없습니다";
+}
+
+// 검색 기능
+if (searchInput) {
+  searchInput.addEventListener("input", (e) => {
+    const query = e.target.value.trim();
+    if (query.length > 0) {
+      searchCities(query);
+    } else {
+      if (searchResults) searchResults.innerHTML = "";
+    }
+  });
+}
+
+// 도시 검색 함수
+async function searchCities(query) {
+  try {
+    const response = await fetch(
+      `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(query)}&limit=5&appid=${apiKey}`
+    );
+    if (!response.ok) throw new Error("검색 실패");
+    const cities = await response.json();
+    displaySearchResults(cities);
+  } catch (error) {
+    console.error("도시 검색 오류:", error);
+    searchResults.innerHTML = "<div style='padding: 20px; text-align: center; color: #666;'>검색 중 오류가 발생했습니다.</div>";
+  }
+}
+
+// 검색 결과 표시
+function displaySearchResults(cities) {
+  searchResults.innerHTML = "";
+  if (cities.length === 0) {
+    searchResults.innerHTML = "<div style='padding: 20px; text-align: center; color: #666;'>검색 결과가 없습니다.</div>";
+    return;
+  }
+
+  cities.forEach((city) => {
+    const card = createLocationCard(city.name, city.country, city.lat, city.lon);
+    searchResults.appendChild(card);
+  });
+}
+
+// 위치 카드 생성 함수
+function createLocationCard(cityName, countryName, lat, lon) {
+  const card = document.createElement("div");
+  card.classList.add("location-card");
+  
+  // 날씨 정보 가져오기
+  fetchWeatherForLocation(cityName, countryName, lat, lon).then((weatherInfo) => {
+    card.innerHTML = `
+      <img src="https://via.placeholder.com/60x60?text=${cityName.charAt(0)}" alt="${cityName}" class="location-image" />
+      <div class="location-info">
+        <div class="location-name">
+          <span class="location-pin">📍</span>
+          ${cityName}
+        </div>
+        <div class="location-country">${countryName}</div>
+        <div class="location-weather">
+          <span class="weather-emoji">${getWeatherEmoji(weatherInfo.icon)}</span>
+          ${weatherInfo.description}
+        </div>
+      </div>
+      <div class="location-temp">${weatherInfo.temp}°C</div>
+    `;
+  });
+
+  card.addEventListener("click", () => {
+    selectLocation(cityName, countryName, lat, lon);
+  });
+
+  return card;
+}
+
+// 특정 위치의 날씨 정보 가져오기
+async function fetchWeatherForLocation(cityName, countryName, lat, lon) {
+  try {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&lang=kr&units=metric`
+    );
+    if (!response.ok) throw new Error("날씨 정보 가져오기 실패");
+    const data = await response.json();
+    return {
+      temp: Math.round(data.main.temp),
+      description: data.weather[0].description,
+      icon: data.weather[0].icon,
+    };
+  } catch (error) {
+    console.error("날씨 정보 가져오기 오류:", error);
+    return { temp: "--", description: "알 수 없음", icon: "01d" };
+  }
+}
+
+// 날씨 아이콘을 이모지로 변환
+function getWeatherEmoji(iconCode) {
+  const iconMap = {
+    "01d": "☀️",
+    "01n": "🌙",
+    "02d": "⛅",
+    "02n": "☁️",
+    "03d": "☁️",
+    "03n": "☁️",
+    "04d": "☁️",
+    "04n": "☁️",
+    "09d": "🌧️",
+    "09n": "🌧️",
+    "10d": "🌦️",
+    "10n": "🌧️",
+    "11d": "⛈️",
+    "11n": "⛈️",
+    "13d": "❄️",
+    "13n": "❄️",
+    "50d": "🌫️",
+    "50n": "🌫️",
+  };
+  return iconMap[iconCode] || "☀️";
+}
+
+// 위치 선택 함수
+function selectLocation(cityName, countryName, lat, lon) {
+  // 최근 검색에 추가
+  const searchItem = { name: cityName, country: countryName, lat, lon, timestamp: Date.now() };
+  recentSearchesList = recentSearchesList.filter(
+    (item) => !(item.name === cityName && item.country === countryName)
+  );
+  recentSearchesList.unshift(searchItem);
+  if (recentSearchesList.length > 5) {
+    recentSearchesList = recentSearchesList.slice(0, 5);
+  }
+  localStorage.setItem("recentSearches", JSON.stringify(recentSearchesList));
+
+  // 날씨 페이지로 이동하고 해당 위치의 날씨 표시
+  showPage("weather");
+  handleLocationWeather(cityName, countryName, lat, lon);
+}
+
+// 특정 위치의 날씨 표시
+async function handleLocationWeather(cityName, countryName, lat, lon) {
+  geocodeResult.textContent = `${cityName}, ${countryName}`;
+  const position = { coords: { latitude: lat, longitude: lon } };
+  await handleSuccess(position);
+}
+
+// 인기 도시 목록 로드
+function loadPopularDestinations() {
+  popularDestinations.innerHTML = "";
+  popularCities.forEach((city) => {
+    const card = createLocationCard(city.name, city.country, city.lat, city.lon);
+    popularDestinations.appendChild(card);
+  });
+}
+
+// 최근 검색 목록 로드
+function loadRecentSearches() {
+  recentSearches.innerHTML = "";
+  if (recentSearchesList.length === 0) {
+    recentSearches.innerHTML = "<div style='padding: 10px; text-align: center; color: #999; font-size: 0.9em;'>최근 검색 기록이 없습니다.</div>";
+    return;
+  }
+
+  recentSearchesList.forEach((item) => {
+    const card = createLocationCard(item.name, item.country, item.lat, item.lon);
+    recentSearches.appendChild(card);
+  });
 }
