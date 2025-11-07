@@ -3,36 +3,90 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Weather App</title>
     <link rel="stylesheet" href="main.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
   <body>
-    <div class="box-border size border-4 p-4 border-gray-400 m-4">
-      <button id="share">share my location</button>
-      <button id="info">weather info</button>
-      <div class="grid-container">
-        <div class="box" style="grid-area: box-1">최고기온</div>
-        <div id="maxTemp" class="box" style="grid-area: box-2"></div>
-        <div class="box" style="grid-area: box-3">최저기온</div>
-        <div id="minTemp" class="box" style="grid-area: box-4"></div>
+    <div class="weather-app-container">
+      <!-- 상단 위치 정보 및 변경 버튼 -->
+      <div class="location-header">
+        <span class="location-icon">📍</span>
+        <span id="geocodeResult">Seoul, South Korea</span>
+        <button class="change-location-btn" id="changeLocationBtn">Change</button>
+      </div>
 
-        <!-- <div class="nowTemp box" > -->
-          <div class="box" style ="grid-area: box-5">현재</div>
-          <div id="currentTemp" class="box" style="grid-area: box-6"></div>
-        <!-- </div> -->
+      <!-- 현재 날씨 카드 -->
+      <div class="current-weather-card">
+        <div class="main-temp-info">
+          <div class="temperature">
+            <span id="currentTemp">18</span>°
+          </div>
+          <div class="description">
+            <span id="weatherDescription">Partly Cloudy</span>
+            <div class="feels-like">Feels like <span id="feelsLikeTemp">16</span>°</div>
+          </div>
+        </div>
+        <div class="weather-icon-large">
+          <img id="currentWeatherIcon" src="http://openweathermap.org/img/wn/02d@2x.png" alt="Partly Cloudy" />
+        </div>
+        <div class="temp-details">
+          H:<span id="maxTemp">21</span>° L:<span id="minTemp">14</span>°
+          <span class="dot"></span>
+          <span class="precipitation-icon">💧</span>
+          <span id="precipitationChance">20</span>%
+        </div>
+        <div id="weatherAlert" class="alert-banner">
+          <span class="alert-icon">⚠️</span>
+          <span id="alertMessage">Rain expected at 3 PM<br>Bring an umbrella for your commute home</span>
+        </div>
       </div>
-      <div id="weekContainer">
-        <p id="week">위크</p>
-        <div id="day1">데이원</div>
+
+      <!-- 시간별 예보 섹션 -->
+      <div class="hourly-forecast-section">
+        <div class="section-header">
+          <h2>Hourly Forecast</h2>
+          <span>24 hours</span>
+        </div>
+        <div id="hourlyForecastContainer" class="hourly-cards-wrapper">
+          <!-- 시간별 카드는 JavaScript로 동적 생성 -->
+        </div>
       </div>
-      <div>
-        <div id="character"></div>
-        <div id="clothes" class="bg-yellow-100"></div>
+
+      <!-- 캐릭터 이미지 및 의상 추천 섹션 -->
+      <div class="character-clothing-section">
+        <div id="characterContainer">
+          <!-- 캐릭터 이미지는 JavaScript로 동적 생성 -->
+        </div>
+        <div id="clothingSuggestion" class="clothing-suggestion-box">
+          <!-- 의상 추천 텍스트는 JavaScript로 동적 생성 -->
+        </div>
       </div>
-      <pre id="result"></pre>
+
+      <!-- 7일 예보 섹션 -->
+      <div class="seven-day-forecast-section">
+        <h2>7-Day Forecast</h2>
+        <div id="weekForecast" class="daily-forecast-list">
+          <!-- 일별 예보는 JavaScript로 동적 생성 -->
+        </div>
+      </div>
+
+      <!-- 하단 내비게이션 바 -->
+      <nav class="bottom-nav">
+        <div class="nav-item active">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-label">Home</span>
+        </div>
+        <div class="nav-item">
+          <span class="nav-icon">🗺️</span>
+          <span class="nav-label">Map</span>
+        </div>
+        <div class="nav-item">
+          <span class="nav-icon">👤</span>
+          <span class="nav-label">Profile</span>
+        </div>
+      </nav>
     </div>
+    <script src="script.js"></script>
   </body>
-  <script src="script.js"></script>
 </html>
