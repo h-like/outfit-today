@@ -1,7 +1,7 @@
 # 👗 Outfit Today
 
 🌞 날씨 기반 의상 추천 웹 애플리케이션
-- 배포[https://h-like.github.io/outfit-today/]
+- [배포 link](https://h-like.github.io/outfit-today/)
 
 # 🌟 주요 기능
 
@@ -43,7 +43,7 @@ open with live server
 2. **🔍Change 버튼**: 검색을 통해 원하는 위치의 날씨 정보 확인
 
 ### 데이터
-1. **검색 내역**: localStorage에 저장
+1. **최근 검색 내역**: localStorage에 저장
 
 ## 🌐 배포
 
