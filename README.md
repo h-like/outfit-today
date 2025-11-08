@@ -2,8 +2,8 @@
 
 🌞 날씨 기반 의상 추천 웹 애플리케이션
 - [배포 link](https://h-like.github.io/outfit-today/)
-<img alt="Image" src="https://github.com/user-attachments/assets/50409751-1dd7-4522-a9f3-688839b2d1a2" width="700"/>
-<img alt="Image" src="https://github.com/user-attachments/assets/04288645-0a0f-43c9-8a65-71fbb0a5cdfe" width="700"/>
+<img alt="Image" src="https://github.com/user-attachments/assets/50409751-1dd7-4522-a9f3-688839b2d1a2" width="300"/>
+<img alt="Image" src="https://github.com/user-attachments/assets/04288645-0a0f-43c9-8a65-71fbb0a5cdfe" width="300"/>
 
 # 🌟 주요 기능
 
