@@ -2,14 +2,14 @@
 
 🌞 날씨 기반 의상 추천 웹 애플리케이션
 - [배포 link](https://h-like.github.io/outfit-today/)
-
+<img  alt="Image" src="https://github.com/user-attachments/assets/db5356a7-9123-43fa-bf12-57c17997f560" />
+<img  alt="Image" src="https://github.com/user-attachments/assets/3cfc5bc3-691d-4b17-83fd-f405ddff416f" />
 # 🌟 주요 기능
 
 ## 🌤️ 날씨 기반 의상 추천
 - 실시간 날씨 데이터 기반 의상 추천
 
 ## 🛠️ 기술 스택 Stacks
-<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
 - **HTML, CSS, JavaScript**
 - **Data Storage**: localStorage (브라우저 로컬 저장소)
 - **Weather API**: OpenWeatherMap API
@@ -35,13 +35,10 @@ open with live server
 ```
 
 
-브라우저에서 [http://localhost:3000](http://localhost:3000)을 열어 애플리케이션을 확인하세요.
-
-
 ## 📱 사용 방법
 1. **📍 버튼**: 현재 위치에 맞는 의상과 날씨 정보를 확인
 2. **🔍Change 버튼**: 검색을 통해 원하는 위치의 날씨 정보 확인
-
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
 ### 데이터
 1. **최근 검색 내역**: localStorage에 저장
 
