@@ -55,7 +55,7 @@ open with live server
 2. **위치 설정 관리**: [chrome](https://support.google.com/chrome/answer/142065?hl=ko&co=GENIE.Platform)
 
 
-## 🌐 [배포}(https://h-like.github.io/outfit-today/) 
+## 🌐 [배포](https://h-like.github.io/outfit-today/) 
 
 
 ## 🤝 기여하기
