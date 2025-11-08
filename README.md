@@ -2,8 +2,9 @@
 
 🌞 날씨 기반 의상 추천 웹 애플리케이션
 - [배포 link](https://h-like.github.io/outfit-today/)
-<img  alt="Image" src="https://github.com/user-attachments/assets/db5356a7-9123-43fa-bf12-57c17997f560" />
-<img  alt="Image" src="https://github.com/user-attachments/assets/3cfc5bc3-691d-4b17-83fd-f405ddff416f" />
+<img alt="Image" src="https://github.com/user-attachments/assets/50409751-1dd7-4522-a9f3-688839b2d1a2" />
+<img alt="Image" src="https://github.com/user-attachments/assets/04288645-0a0f-43c9-8a65-71fbb0a5cdfe" />
+
 # 🌟 주요 기능
 
 ## 🌤️ 날씨 기반 의상 추천
@@ -38,11 +39,24 @@ open with live server
 ## 📱 사용 방법
 1. **📍 버튼**: 현재 위치에 맞는 의상과 날씨 정보를 확인
 2. **🔍Change 버튼**: 검색을 통해 원하는 위치의 날씨 정보 확인
-<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-### 데이터
-1. **최근 검색 내역**: localStorage에 저장
 
-## 🌐 배포
+<img alt="Image" src="https://github.com/user-attachments/assets/153c929c-2993-4707-8120-1aaffb9c7685" />
+
+- 원하는 도시를 검색합니다.
+
+<img alt="Image" src="https://github.com/user-attachments/assets/4e07c7f6-aa3c-4bbd-ae6a-13de82c7dcf2" />
+<img alt="Image" src="https://github.com/user-attachments/assets/76bc8f4e-587a-471d-b98f-c9deb83da976" />
+
+- 클릭한 도시로 이동하여 그 도시의 오늘 날씨와 일주일 예상 날씨를 보여줍니다.
+
+
+### 데이터 💾
+1. **최근 검색 내역**: localStorage에 저장
+2. **위치 설정 관리**: [chrome](https://support.google.com/chrome/answer/142065?hl=ko&co=GENIE.Platform)
+
+
+## 🌐 [배포}(https://h-like.github.io/outfit-today/) 
+
 
 ## 🤝 기여하기
 
