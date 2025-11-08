@@ -1,19 +1,16 @@
 # 👗 Outfit Today
 
 🌞 날씨 기반 의상 추천 웹 애플리케이션
-배포(https://h-like.github.io/outfit-today/) 
+- 배포[https://h-like.github.io/outfit-today/]
 
-## 🌟 주요 기능
+# 🌟 주요 기능
 
-### 🌤️ 날씨 기반 의상 추천
+## 🌤️ 날씨 기반 의상 추천
 - 실시간 날씨 데이터 기반 의상 추천
 
-
 ## 🛠️ 기술 스택 Stacks
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
 - **HTML, CSS, JavaScript**
-<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
-<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
 - **Data Storage**: localStorage (브라우저 로컬 저장소)
 - **Weather API**: OpenWeatherMap API
 
@@ -34,7 +31,8 @@ const apiKey = "여기에_본인의_API_KEY를_입력하세요";
 
 ### 3. 개발 서버 실행
 ```
-open live server
+open with live server
+```
 
 
 브라우저에서 [http://localhost:3000](http://localhost:3000)을 열어 애플리케이션을 확인하세요.
