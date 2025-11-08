@@ -1,7 +1,7 @@
-# 👗 OutfitForecast
+# 👗 Outfit Today
 
-날씨 기반 의상 추천 웹 애플리케이션
-배포[https://example.com](https:d) 
+🌞 날씨 기반 의상 추천 웹 애플리케이션
+배포(https://h-like.github.io/outfit-today/) 
 
 ## 🌟 주요 기능
 
@@ -9,8 +9,11 @@
 - 실시간 날씨 데이터 기반 의상 추천
 
 
-## 🛠️ 기술 스택
+## 🛠️ 기술 스택 Stacks
 - **HTML, CSS, JavaScript**
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
 - **Data Storage**: localStorage (브라우저 로컬 저장소)
 - **Weather API**: OpenWeatherMap API
 
@@ -18,7 +21,7 @@
 
 ### 1. 저장소 클론
 ```bash
-git clone [<repository-url>](https://github.com/h-like/geolocation)
+git clone (https://github.com/h-like/geolocation)
 ```
 
 ### 2. 날씨 API 키 (OpenWeatherMap) 
@@ -27,7 +30,7 @@ git clone [<repository-url>](https://github.com/h-like/geolocation)
 ```js
 // script.js
 const apiKey = "여기에_본인의_API_KEY를_입력하세요";
-
+```
 
 ### 3. 개발 서버 실행
 ```
